@@ -1,4 +1,3 @@
-
 package calcrpn;
 
 /**
@@ -20,7 +19,7 @@ public class CalcRPNModel {
     CalcBrain calcBrain;
     
     CalcRPNModel() {
-        calcBrain = new CalcBrain();
+       calcBrain = new CalcBrain();
     }
     
     public String processCalc(String token) {
