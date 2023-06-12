@@ -3,11 +3,11 @@ package calcrpn;
 import java.util.Stack;
 
 public class CalcBrain implements CalcRPNOperations {
-    Stack<Float> Results;
+    Stack<Float> results;
     String operand;
 
     public CalcBrain() {
-        Results = new Stack<Float>();
+        results = new Stack<Float>();
         operand = "";
     }
 
@@ -19,7 +19,8 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String digit(String digit) {
-        return null;
+        operand +=digit;
+        return digit;
     }
 
     /**
@@ -30,8 +31,41 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String operator(String op) {
-        return null;
+        if (!operand.isEmpty()) {
+            results.push(Float.parseFloat((operand)));
+        }
+        if (results.size() < 2) {
+            return "";
+        }
+
+        float a = results.pop();
+        float b = results.pop();
+        float c = 0.0f;
+
+        switch (op) {
+            case "+":
+                c = a + b;
+                break;
+            case "-":
+                c = a - b;
+                break;
+            case "*":
+                c = a * b;
+                break;
+            case "/":
+                c = a / b;
+                break;
+            case "^":
+                c = (float) Math.pow(b, a);
+                break;
+            default:
+                return "";
+        }
+
+        results.push(c);
+        return Float.toString(c);
     }
+
 
     /**
      * The ClearEntry button on the UI has been pressed
@@ -41,7 +75,8 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String clearEntry() {
-        return null;
+        operand = "";
+        return "Cleared Digits";
     }
 
     /**
@@ -52,7 +87,9 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String clear() {
-        return null;
+        results.clear();
+        operand = "";
+        return " ";
     }
 
     /**
@@ -62,7 +99,12 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String enterPressed() {
-        return null;
+        if (operand.isEmpty()) {
+            return "";
+        }
+        results.push(Float.parseFloat((operand)));
+        operand = "";
+        return " ";
     }
 
     /**
@@ -72,6 +114,10 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String addDecimal() {
-        return null;
+        if (operand.contains(".")) {
+            return "Error";
+        }
+        operand += ".";
+        return ".";
     }
 }
