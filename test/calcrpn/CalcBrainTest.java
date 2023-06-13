@@ -89,7 +89,7 @@ public class CalcBrainTest {
         instance.digit(enterThirdDigit);
         
         String result = instance.operator(enterOperator);
-//        result = instance.operator(enterOperator);
+        result = instance.operator(enterOperator);
         
         String expectedResult = " \n9.0 ";
         
@@ -112,14 +112,11 @@ public class CalcBrainTest {
         instance.digit(enterSecondDigit);
         instance.enterPressed();
         instance.digit(enterThirdDigit);
-//        added enterPressed();
-//        instance.enterPressed();
         
         String result = instance.operator(enterOperator);
-//      applied twice?
-//        result = instance.operator(enterOperator);
+        result = instance.operator(enterOperator);
         
-        String expectedResult = " \n-3.0 ";
+        String expectedResult = " \n-1.0 ";
         
         float delta = 0.0f;
         

@@ -45,22 +45,10 @@ public class CalcBrain implements CalcRPNOperations {
 
         switch (op) {
             case "+":
-                if (results.size() >= 1) {
-                    float previousResult = results.pop();
-                    c = previousResult + a + b;
-                    results.push(previousResult);
-                } else {
-                    c = b + a;
-                }
+                c = b + a;
                 break;
             case "-":
-                if (results.size() > 1) {
-                    float previousResult = results.pop();
-                    c = previousResult - b - a;
-                    results.push(previousResult);
-                } else {
-                    c = b - a;
-                }
+                c = b - a;
                 break;
             case "*":
                 c = b * a;
@@ -78,6 +66,55 @@ public class CalcBrain implements CalcRPNOperations {
         results.push(c);
         return Float.toString(c);
     }
+
+//    public String operator(String op) {
+//        float a, b, c;
+//
+//        if (!operand.isEmpty()) {
+//            results.push(Float.parseFloat(operand));
+//            operand = "";
+//        }
+//        if (results.size() < 2) {
+//            return "";
+//        }
+//        a = results.pop();
+//        b = results.pop();
+//
+//        switch (op) {
+//            case "+":
+//                if (results.size() >= 1) {
+//                    float previousResult = results.pop();
+//                    c = previousResult + a + b;
+//                    results.push(previousResult);
+//                } else {
+//                    c = b + a;
+//                }
+//                break;
+//            case "-":
+//                if (results.size() > 1) {
+//                    float previousResult = results.pop();
+//                    c = previousResult - b - a;
+//                    results.push(previousResult);
+//                } else {
+//                    c = b - a;
+//                }
+//                break;
+//            case "*":
+//                c = b * a;
+//                break;
+//            case "/":
+//                c = b / a;
+//                break;
+//            case "^":
+//                c = (float) Math.pow(b, a);
+//                break;
+//            default:
+//                return "";
+//        }
+//
+//        results.push(c);
+//        return Float.toString(c);
+//    }
 
 
     /**
