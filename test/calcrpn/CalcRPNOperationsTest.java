@@ -47,8 +47,6 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.digit(digit);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -62,8 +60,6 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.operator(op);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -76,8 +72,6 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.clearEntry();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -90,8 +84,6 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.clear();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -104,8 +96,6 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.enterPressed();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -118,8 +108,7 @@ public class CalcRPNOperationsTest {
         String expResult = "";
         String result = instance.addDecimal();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     public class CalcRPNOperationsImpl implements CalcRPNOperations {

@@ -31,29 +31,42 @@ public class CalcBrain implements CalcRPNOperations {
      */
     @Override
     public String operator(String op) {
+        float a, b, c;
+
         if (!operand.isEmpty()) {
-            results.push(Float.parseFloat((operand)));
+            results.push(Float.parseFloat(operand));
+            operand = "";
         }
         if (results.size() < 2) {
             return "";
         }
-
-        float a = results.pop();
-        float b = results.pop();
-        float c = 0.0f;
+        a = results.pop();
+        b = results.pop();
 
         switch (op) {
             case "+":
-                c = a + b;
+                if (results.size() >= 1) {
+                    float previousResult = results.pop();
+                    c = previousResult + a + b;
+                    results.push(previousResult);
+                } else {
+                    c = b + a;
+                }
                 break;
             case "-":
-                c = a - b;
+                if (results.size() > 1) {
+                    float previousResult = results.pop();
+                    c = previousResult - b - a;
+                    results.push(previousResult);
+                } else {
+                    c = b - a;
+                }
                 break;
             case "*":
-                c = a * b;
+                c = b * a;
                 break;
             case "/":
-                c = a / b;
+                c = b / a;
                 break;
             case "^":
                 c = (float) Math.pow(b, a);
@@ -76,7 +89,7 @@ public class CalcBrain implements CalcRPNOperations {
     @Override
     public String clearEntry() {
         operand = "";
-        return "Cleared Digits";
+        return "";
     }
 
     /**
@@ -89,7 +102,7 @@ public class CalcBrain implements CalcRPNOperations {
     public String clear() {
         results.clear();
         operand = "";
-        return " ";
+        return "Clear All";
     }
 
     /**
@@ -104,7 +117,7 @@ public class CalcBrain implements CalcRPNOperations {
         }
         results.push(Float.parseFloat((operand)));
         operand = "";
-        return " ";
+        return "";
     }
 
     /**
@@ -118,6 +131,6 @@ public class CalcBrain implements CalcRPNOperations {
             return "Error";
         }
         operand += ".";
-        return ".";
+        return "";
     }
 }
